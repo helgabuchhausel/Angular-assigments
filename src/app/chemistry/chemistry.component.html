@@ -1,0 +1,45 @@
+<div *ngIf="!stopped">
+  <div>
+    <p>Learn the elements of the periodic table</p>
+  </div>
+  <div>
+    <div>
+      <div>
+        <p>Name: {{ choiceOfElement.name | titlecase }}</p>
+        <p>Atomic number: {{ choiceOfElement.atomNumber }}</p>
+        <p>Color: {{ choiceOfElement.color }}</p>
+        <p>State: {{ choiceOfElement.state }}</p>
+      </div>
+      <div>
+        <img [src]="choiceOfElement.link" width="200" />
+      </div>
+    </div>
+    <div>
+      <button (click)="toTheQuiz()">Stop</button>
+    </div>
+  </div>
+</div>
+
+<article *ngIf="stopped">
+  <div>
+    <p>Quiz</p>
+  </div>
+  <div>
+    <div>
+      <div>
+        <p>{{ quizElement.name | titlecase }}</p>
+      </div>
+      <div>Right Answers: {{ streak }}</div>
+    </div>
+    <div *ngFor="let q of questions">
+      <div>{{ q.question }}</div>
+      <div><input class="input" #in1 type="string" /></div>
+      <div>
+        <button (click)="compare(q, in1.value)">OK</button>
+      </div>
+    </div>
+    <div>
+      <button (click)="change()">Back</button>
+    </div>
+  </div>
+</article>

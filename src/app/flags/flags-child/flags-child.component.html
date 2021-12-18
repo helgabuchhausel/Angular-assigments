@@ -1,0 +1,17 @@
+<div>
+  {{ Title }}
+</div>
+
+<select [(ngModel)]="counter">
+  <option *ngFor="let option of Options; index as i" value="{{ i }}">
+    {{ option }}
+  </option>
+</select>
+
+<div *ngIf="IsText">
+  <div *ngIf="counter != null">Good day: {{ Resources[counter] }}</div>
+</div>
+
+<div *ngIf="!IsText">
+  <img src="{{ Resources[counter] }}" width="200" />
+</div>
