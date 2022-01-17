@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { HttpService, IMovies, IProperties } from './services/http.service';
-import { StarwarsService, INewMovie } from './services/starwars.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpserviceService } from './services/httpservice.service';
 
 @Component({
   selector: 'app-starwars',
@@ -10,62 +9,28 @@ import { StarwarsService, INewMovie } from './services/starwars.service';
 })
 export class StarwarsComponent implements OnInit {
   constructor(
-    private StarWarsService: HttpService,
-    private NewMoviesService: StarwarsService
+    private http: HttpClient,
+    private httpService : HttpserviceService
   ) {
-    this.StarWarsService.GetMovies().subscribe((result) => {
-      this.movies = result;
-    });
-
-    this.allNewMovies = this.NewMoviesService.GetMovies();
   }
 
-  ngOnInit(): void {}
-
-  movies!: IMovies;
-  movie!: IProperties;
-
-  displayMovie!: IStarWarsDisplay;
-  allNewMovies: INewMovie[];
+  ngOnInit(): void {
+    this.data = this.httpService.getMovies().subscribe(
+      (value: any) =>
+        this.data = value
+    );
+  }
 
   api: boolean = false;
-  clicked: boolean = false;
-  crawl: boolean = false;
-  add: boolean = false;
-  see: boolean = false;
-  del: boolean = false;
 
-  title!: string;
-  date!: string;
+  data: any;
+  allMovies: any;
 
-  MovieChoice(num: number) {
-    this.movie = this.movies.results[num - 1].properties;
-    this.displayMovie = {
-      title: this.movie.title,
-      release_date: this.movie.release_date,
-      chars: this.movie.characters.length,
-      planets: this.movie.planets.length,
-      sship: this.movie.starships.length,
-      vechicles: this.movie.vehicles.length,
-      species: this.movie.species.length,
-      opening_crawl: this.movie.opening_crawl,
-    };
-    this.clicked = !this.clicked;
+  showMovies(){
+    this.allMovies = this.data.result;
   }
 
-  MovieInput() {
-    this.add = false;
-    this.NewMoviesService.SetMovie(this.title, this.date);
-  }
+
 }
 
-export interface IStarWarsDisplay {
-  title: string;
-  release_date: string;
-  chars: number;
-  planets: number;
-  sship: number;
-  vechicles: number;
-  species: number;
-  opening_crawl: string;
-}
+

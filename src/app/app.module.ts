@@ -20,8 +20,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     FlagsComponent,
     StarwarsComponent,
     FlagsChildComponent,
-    NavbarComponent,
-
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

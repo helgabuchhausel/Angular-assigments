@@ -2,49 +2,12 @@
   <div >Star Wars Movie </div>
   <div >
       <div>
-          <button (click)="api=!api">see the Star Wars movies</button>
-          <div *ngIf="api">
-              <div >
-                  <button *ngFor="let item of movies.results, let i = index" (click)="MovieChoice(i+1)" >{{i+1}}</button>
+          <button (click)=showMovies()>see the Star Wars movies</button>
+              <div *ngFor="let item of allMovies">
+                  {{item.properties.title}}
               </div>
-              <div *ngIf="clicked">
-                  <div>{{movie.title}}</div>
-                  <div>Release date: {{displayMovie.release_date  | date }}</div>
-                  <div>Characters: {{displayMovie.chars}}</div>
-                  <div>Planets: {{displayMovie.planets}}</div>
-                  <div>Starships:  {{displayMovie.sship}}</div>
-                  <div>Vehicles:  {{displayMovie.vechicles}}</div>
-                  <div>Species:  {{displayMovie.species}}</div>
-                  <button (click)="crawl=!crawl" >See opening crawl</button>
-              </div>
-              <div *ngIf="crawl" class="has-text-centered">
-                  {{displayMovie.opening_crawl}}
-              </div>
-              <br>
-          </div>
       </div>
-      <div>
-          <button (click)="add=!add">add a new Star Wars movie</button>
-          <div  *ngIf="add">
-              <form>
-                  <label>Title: </label><input [(ngModel)]="title" type="text" name="title"><br>
-                  <label>Release Date: </label><input [(ngModel)]="date"   type="text" name="date"><br>
-                  <button (click)="MovieInput()">OK</button>
-              </form>
-          </div>
-      </div>
-      <div>
-          <button  (click)="see=!see">see the added Star Wars movie(s)</button>
-          <div *ngIf="see">
-              <div *ngIf="allNewMovies == null" >
-                  Nothing to see here
-              </div>
-              <div *ngFor="let newMovie of allNewMovies">
-                  <div>Title: {{newMovie.title | titlecase}}</div>
-                  <div>Release date: {{newMovie.release_date}}</div>
-              </div>
-          </div>
-      </div>
-  </div>
+</div>
+
 </article>
 
