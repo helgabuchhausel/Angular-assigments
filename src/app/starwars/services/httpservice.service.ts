@@ -14,4 +14,15 @@ export class HttpserviceService {
     return this.http.get<any>(this.url);
   }
 
+  getAllMovies(){
+
+    let data;
+    this.getMovies().subscribe(
+    (value: any) =>
+      data = value
+  );
+    return data;
+}
+
+
 }

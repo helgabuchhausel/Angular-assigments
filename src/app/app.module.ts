@@ -12,6 +12,7 @@ import { FlagsChildComponent } from './flags/flags-child/flags-child.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     FlagsComponent,
     StarwarsComponent,
     FlagsChildComponent,
-    NavbarComponent
+    NavbarComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

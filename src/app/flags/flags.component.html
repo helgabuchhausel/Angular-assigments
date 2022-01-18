@@ -1,33 +1,58 @@
-<div *ngIf="!Show" class="article is primary">
-  <div>
-    <div>Your name:</div>
-    <div><input type="text" [(ngModel)]="Name" /></div>
+
+<div class="card">
+  <div class="card-content">
+    <div class="title"> Fun with flags and languages</div>
+    <div class="subtitle" *ngIf="!Show">
+      <div class="box">
+
+        <div class="columns">
+          <div class="column">
+            Name:
+          </div>
+          <div class="column">
+            <input class="input is-success is-outlined" type="text"  [(ngModel)]="Name" />
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            So your name is
+            {{ Name  | titlecase}} .
+          </div>
+          <div class="column">
+            Am I right ?
+          </div>
+        </div>
+
+        <button class="button is-success is-outlined" (click)="setName(Name)">yes</button>
+      </div>
+
+    </div>
+
+    <div class="subtitle" *ngIf="Show">
+      <div class="box">
+        <div>Hello {{ Name | titlecase }}</div>
+        <div>
+          <app-flags-child
+            [title]="Title1"
+            [options]="Options1"
+            [resources]="ImageRescources"
+            [isText]="false"
+          ></app-flags-child>
+        </div>
+
+        <div>
+          <app-flags-child
+            [title]="Title2"
+            [options]="Options2"
+            [resources]="Sentences"
+          ></app-flags-child>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div>
-    <div>So your name is</div>
-    <div>{{ Name }}</div>
-  </div>
-  <div>
-    <button (click)="setName(Name)">ok</button>
-  </div>
+
+
 </div>
 
-<div *ngIf="Show">
-  <div>Hello {{ Name | titlecase }}</div>
-  <div>
-    <app-flags-child
-      [title]="Title1"
-      [options]="Options1"
-      [resources]="ImageRescources"
-      [isText]="false"
-    ></app-flags-child>
-  </div>
-
-  <div>
-    <app-flags-child
-      [title]="Title2"
-      [options]="Options2"
-      [resources]="Sentences"
-    ></app-flags-child>
-  </div>
-</div>

@@ -1,45 +1,92 @@
-<div *ngIf="!stopped">
-  <div>
-    <p>Learn the elements of the periodic table</p>
-  </div>
-  <div>
-    <div>
+<div class="card">
+
+  <div class="card-content" *ngIf="!stopped">
+    <div class="title">
+      Learn the elements of the periodic table
+    </div>
+    <div class="subtitle">
+
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-96x96">
+                <img class="is-rounded" [src]="choiceOfElement.link"  />
+              </figure>
+            </div>
+            <div class="media-content">
+                <div class="content">
+                  <strong>{{ choiceOfElement.name | titlecase }}</strong>
+                  <br>
+                  <p>Atomic number: {{ choiceOfElement.atomNumber }}</p>
+                  <p>Color: {{ choiceOfElement.color }}</p>
+                  <p>State: {{ choiceOfElement.state }}</p>
+                </div>
+            </div>
+          </article>
+        </div>
+
+      <br>
       <div>
-        <p>Name: {{ choiceOfElement.name | titlecase }}</p>
-        <p>Atomic number: {{ choiceOfElement.atomNumber }}</p>
-        <p>Color: {{ choiceOfElement.color }}</p>
-        <p>State: {{ choiceOfElement.state }}</p>
-      </div>
-      <div>
-        <img [src]="choiceOfElement.link" width="200" />
+        <button class="button is-success is-outlined" (click)="toTheQuiz()">Stop</button>
       </div>
     </div>
-    <div>
-      <button (click)="toTheQuiz()">Stop</button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card-content" *ngIf="stopped">
+    <div class="title">
+      Quiz
+    </div>
+    <div class="subtitle">
+
+
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <p>{{ quizElement.name | titlecase }}</p>
+          </div>
+          <div class="media-content">
+            <div *ngFor="let q of questions">
+
+              <div class="columns">
+                <div class="column ">{{ q.question }}</div>
+                <div class="column "><input class="input is-success " #in1 type="string"
+                  /></div>
+                <div class="column ">
+                    <button class="button is-success is-outlined" (click)="compare(q, in1.value)">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+
+
+
+
+
+        <div>Right Answers: {{ streak }}</div>
+
+      <div>
+        <button class="button is-success is-outlined"  (click)="change()">Back</button>
+      </div>
     </div>
   </div>
 </div>
 
-<article *ngIf="stopped">
-  <div>
-    <p>Quiz</p>
-  </div>
-  <div>
-    <div>
-      <div>
-        <p>{{ quizElement.name | titlecase }}</p>
-      </div>
-      <div>Right Answers: {{ streak }}</div>
-    </div>
-    <div *ngFor="let q of questions">
-      <div>{{ q.question }}</div>
-      <div><input class="input" #in1 type="string" /></div>
-      <div>
-        <button (click)="compare(q, in1.value)">OK</button>
-      </div>
-    </div>
-    <div>
-      <button (click)="change()">Back</button>
-    </div>
-  </div>
-</article>
+

@@ -1,13 +1,38 @@
-<article >
-  <div >Star Wars Movie </div>
-  <div >
-      <div>
-          <button (click)=showMovies()>see the Star Wars movies</button>
-              <div *ngFor="let item of allMovies">
-                  {{item.properties.title}}
-              </div>
+<div class="card">
+  <div class="card-content">
+    <div class="title">Star Wars Movies </div>
+    <div class="subtitle">
+
+      <div class="box">
+        <div class="columns">
+          <div class="column">
+            <button class="button is-success is-outlined"  (click)=showMovies()>{{title1}} the Star Wars movies</button>
+          </div>
+          <div class="columns">
+            <button class="button is-success is-outlined"  (click)=showOneMovie()>{{title2}} the the first Star Wars movie</button>
+
+          </div>
       </div>
+
+      <div class="columns">
+        <div class="column is-half" *ngIf=clicked1>
+          <div *ngFor="let item of allMovies">
+            {{item.properties.title}}
+          </div>
+        </div>
+        <div class="column is-half" *ngIf=clicked2>
+            {{firstMovie.title}}
+        </div>
+      </div>
+      </div>
+
+
+
+
+
+
+  </div>
+  </div>
 </div>
 
-</article>
 
