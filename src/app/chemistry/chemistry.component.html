@@ -1,57 +1,63 @@
 <div class="card">
-
-  <div class="card-content" *ngIf="!stopped">
+<div class="card-content" *ngIf="learningNotStopped; else learningStopped">
     <div class="title">
       Learn the elements of the periodic table
     </div>
-    <div class="subtitle">
 
-        <div class="box">
-          <article class="media">
-            <div class="media-left">
-              <figure class="image is-96x96">
-                <img class="is-rounded" [src]="choiceOfElement.link"  />
-              </figure>
-            </div>
-            <div class="media-content">
-                <div class="content">
-                  <strong>{{ choiceOfElement.name | titlecase }}</strong>
-                  <br>
-                  <p>Atomic number: {{ choiceOfElement.atomNumber }}</p>
-                  <p>Color: {{ choiceOfElement.color }}</p>
-                  <p>State: {{ choiceOfElement.state }}</p>
-                </div>
-            </div>
-          </article>
+    <div class="subtitle" *ngIf="quizNotStarted; else quizStarted">
+      <div class="box ">
+        <div>
+          First you'll learn some chemical elements, after that you can make a quiz about it.
         </div>
-
-      <br>
+      </div>
       <div>
-        <button class="button is-success is-outlined" (click)="toTheQuiz()">Stop</button>
+        <button class="button is-success is-outlined" (click)="toTheStudy()">
+          Let's start
+        </button>
       </div>
     </div>
+
+
+<ng-template #quizStarted>
+  <div class="subtitle" >
+    <div class="box" >
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-96x96">
+            <img class="is-rounded" [src]="choiceOfElement.link"  />
+          </figure>
+        </div>
+        <div class="media-content">
+            <div class="content">
+              <strong>{{ choiceOfElement.name | titlecase }}</strong>
+              <br>
+              <p>Atomic number: {{ choiceOfElement.atomNumber }}</p>
+              <p>Color: {{ choiceOfElement.color }}</p>
+              <p>State: {{ choiceOfElement.state }}</p>
+            </div>
+        </div>
+      </article>
+    </div>
+  <br>
+  <div>
+    <button class="button is-success is-outlined" (click)="learningNotStopped = false ; toTheQuiz()">Start the game</button>
   </div>
+</div>
+</ng-template>
 
 
 
 
+</div>
 
+<!-- quizz-->
 
-
-
-
-
-
-
-
-
-
-  <div class="card-content" *ngIf="stopped">
+<ng-template #learningStopped>
+  <div class="card-content">
     <div class="title">
       Quiz
     </div>
     <div class="subtitle">
-
 
       <div class="box">
         <article class="media">
@@ -60,13 +66,12 @@
           </div>
           <div class="media-content">
             <div *ngFor="let q of questions">
-
               <div class="columns">
                 <div class="column ">{{ q.question }}</div>
-                <div class="column "><input class="input is-success " #in1 type="string"
+                <div class="column "><input class="input is-success" type="string"  #in1 required
                   /></div>
                 <div class="column ">
-                    <button class="button is-success is-outlined" (click)="compare(q, in1.value)">OK</button>
+                    <button class="button is-success is-outlined" (click)="compare(q, in1.value); in1.value='';">OK</button>
                 </div>
               </div>
             </div>
@@ -83,10 +88,17 @@
         <div>Right Answers: {{ streak }}</div>
 
       <div>
-        <button class="button is-success is-outlined"  (click)="change()">Back</button>
+        <button class="button is-success is-outlined"  (click)="learningNotStopped = true">Back to learning</button>
       </div>
     </div>
   </div>
+
+
+</ng-template>
+
+
+
+
 </div>
 
 

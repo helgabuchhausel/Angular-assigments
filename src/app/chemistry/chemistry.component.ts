@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { riddle } from './riddle';
 import { element } from './element';
 
@@ -26,12 +26,16 @@ export class ChemistryComponent implements OnInit {
 
   quizElement!: element;
 
-  stopped!: boolean;
+  learningNotStopped : boolean = true;
 
   interval: number = 2000;
 
   streak: number = 0;
 
+  quizNotStarted: boolean = true;
+
+
+  @ViewChild('answer') inputAnswer: any;
   elements: element[] = [
     new element('hydrogen', 1, 'colorless', 'gas'),
     new element('lithium', 3, 'silvery', 'solid'),
@@ -62,19 +66,22 @@ export class ChemistryComponent implements OnInit {
   }
 
   toTheQuiz() {
-    this.change();
     this.quizElement = this.elementMaker();
     this.riddleMaker(this.quizElement);
   }
 
-  change() {
-    this.stopped = !this.stopped;
-  }
+
 
   compare(question: riddle, answer: string) {
     if (question.solution == answer) this.streak++;
     else this.streak = 0;
+
     this.quizElement = this.elementMaker();
     this.riddleMaker(this.quizElement);
+
+  }
+
+  toTheStudy(){
+    this.quizNotStarted = false;
   }
 }

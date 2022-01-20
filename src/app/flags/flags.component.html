@@ -7,17 +7,18 @@
 
         <div class="columns">
           <div class="column">
-            Name:
-          </div>
-          <div class="column">
-            <input class="input is-success is-outlined" type="text"  [(ngModel)]="Name" />
+            <input class="input is-success is-outlined" type="text" name="name" [(ngModel)]="Name" placeholder="your name comes here" />
+
           </div>
         </div>
+
+
+
 
         <div class="columns">
           <div class="column">
             So your name is
-            {{ Name  | titlecase}} .
+            {{ Name  | titlecase}}
           </div>
           <div class="column">
             Am I right ?

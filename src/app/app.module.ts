@@ -14,6 +14,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,4 +37,6 @@ import { MainComponent } from './main/main.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

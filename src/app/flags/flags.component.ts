@@ -46,7 +46,11 @@ export class FlagsComponent implements OnInit {
   ];
 
   setName(name: string) {
-    this.Name = name;
+    if(name.length != 0)
+      this.Name = name;
+    else
+      this.Name = "Anonym";
     this.Show = true;
+
   }
 }
