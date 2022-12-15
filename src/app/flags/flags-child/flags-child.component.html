@@ -2,11 +2,10 @@
   {{ Title }}
 </div>
 
-
 <div class="columns">
   <div class="column">
-    <select class="select is-primary is-rounded"   [(ngModel)]="counter">
-      <option *ngFor="let option of Options; index as i" value="{{ i }}">
+    <select class="select is-primary is-rounded" [(ngModel)]="counter">
+      <option class="dropdown-item" *ngFor="let option of Options; index as i" value="{{ i }}">
         {{ option }}
       </option>
     </select>
@@ -14,15 +13,47 @@
   <div class="column" *ngIf="IsText">
     <div *ngIf="counter != null">Good day: {{ Resources[counter] }}</div>
   </div>
-  <div class="column"   *ngIf="!IsText">
+  <div class="column" *ngIf="!IsText">
     <img src="{{ Resources[counter] }}" width="200" />
   </div>
-
 </div>
 
-
-
-
-
-
-
+<div class="dropdown ">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+      <span>Click me</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Overview
+      </a>
+      <a href="#" class="dropdown-item">
+        Modifiers
+      </a>
+      <a href="#" class="dropdown-item">
+        Grid
+      </a>
+      <a href="#" class="dropdown-item">
+        Form
+      </a>
+      <a href="#" class="dropdown-item">
+        Elements
+      </a>
+      <a href="#" class="dropdown-item">
+        Components
+      </a>
+      <a href="#" class="dropdown-item">
+        Layout
+      </a>
+      <hr class="dropdown-divider">
+      <a href="#" class="dropdown-item">
+        More
+      </a>
+    </div>
+  </div>
+</div>

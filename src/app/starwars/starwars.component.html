@@ -1,38 +1,28 @@
 <div class="card">
   <div class="card-content">
-    <div class="title">Star Wars Movies </div>
+    <div class="title">Star Wars Movies</div>
+    <br />
     <div class="subtitle">
-
-      <div class="box">
+      <div>
         <div class="columns">
-          <div class="column">
-            <button class="button is-success is-outlined"  (click)=showMovies()>{{title1}} the Star Wars movies</button>
+          <div class="column is-half" *ngIf="clicked1">
+            <div *ngFor="let item of allMovies">
+              {{ item.properties.title }}
+            </div>
           </div>
-          <div class="columns">
-            <button class="button is-success is-outlined"  (click)=showOneMovie()>{{title2}} the the first Star Wars movie</button>
-
-          </div>
-      </div>
-
-      <div class="columns">
-        <div class="column is-half" *ngIf=clicked1>
-          <div *ngFor="let item of allMovies">
-            {{item.properties.title}}
+          <div class="column is-half" *ngIf="clicked2">
+            {{ firstMovie.title }}
           </div>
         </div>
-        <div class="column is-half" *ngIf=clicked2>
-            {{firstMovie.title}}
-        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item" (click)="showMovies()"
+            >all Star Wars movies</a
+          >
+          <a class="card-footer-item" (click)="showOneMovie()"
+            >show the first Star Wars movie</a
+          >
+        </footer>
       </div>
-      </div>
-
-
-
-
-
-
-  </div>
+    </div>
   </div>
 </div>
-
-

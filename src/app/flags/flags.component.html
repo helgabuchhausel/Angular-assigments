@@ -1,38 +1,40 @@
-
 <div class="card">
   <div class="card-content">
-    <div class="title"> Fun with flags and languages</div>
+    <div class="title">Fun with flags and languages</div>
+    <br />
     <div class="subtitle" *ngIf="!Show">
-      <div class="box">
-
+      <div>
         <div class="columns">
           <div class="column">
-            <input class="input is-success is-outlined" type="text" name="name" [(ngModel)]="Name" placeholder="your name comes here" />
-
+            <input
+              class="input is-success is-outlined"
+              type="text"
+              name="name"
+              [(ngModel)]="Name"
+              placeholder="your name comes here"
+            />
           </div>
         </div>
 
-
-
-
-        <div class="columns">
-          <div class="column">
+        <div >
+          <div >
             So your name is
-            {{ Name  | titlecase}}
+            {{ Name | titlecase }}
           </div>
-          <div class="column">
-            Am I right ?
-          </div>
+          <br>
+          <div >Am I right ?</div>
         </div>
-
-        <button class="button is-success is-outlined" (click)="setName(Name)">yes</button>
+<br>
+        <button class="button is-success is-outlined" (click)="setName(Name)">
+          yes
+        </button>
       </div>
-
     </div>
 
     <div class="subtitle" *ngIf="Show">
-      <div class="box">
+      <div>
         <div>Hello {{ Name | titlecase }}</div>
+        <br>
         <div>
           <app-flags-child
             [title]="Title1"
@@ -41,7 +43,7 @@
             [isText]="false"
           ></app-flags-child>
         </div>
-
+<br>
         <div>
           <app-flags-child
             [title]="Title2"
@@ -50,10 +52,6 @@
           ></app-flags-child>
         </div>
       </div>
-
     </div>
   </div>
-
-
 </div>
-
